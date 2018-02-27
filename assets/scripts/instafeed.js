@@ -76,6 +76,8 @@
 var feed = new Instafeed({
 	get: 'user',
 	userId: 7183925804, // Ex: 1374300081
-	accessToken: '7183925804.9ddded5.19f19b53c4d84028838191faf8041d5e'
+	accessToken: '7183925804.9ddded5.19f19b53c4d84028838191faf8041d5e',
+	resolution: 'low_resolution',
+	template: '<a class="insta-link" href="{{link}}"><img src="{{image}}" /></a>'
 });
 feed.run();
