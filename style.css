@@ -134,6 +134,19 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
 img {
   max-width: 100%; }
 
+button {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  border: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 30px;
+  left: -15px;
+  position: absolute;
+  top: -15px;
+  width: 30px; }
+
 body {
   color: #111;
   font-family: "Open Sans", sans-serif;
@@ -193,7 +206,7 @@ h6 {
     background-color: #272822;
     color: #FFF; }
   .container .right {
-    color: #222;
+    color: #272822;
     padding: 0; }
 
 #instafeed {
@@ -228,3 +241,49 @@ h6 {
     color: #FFF;
     position: relative;
     right: -7px; }
+
+.modal-container.show {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transform: scale(1);
+          transform: scale(1); }
+
+.modal {
+  background: rgba(255, 255, 255, 0.9);
+  -webkit-box-shadow: 3px 4px 8px rgba(39, 40, 34, 0.6);
+          box-shadow: 3px 4px 8px rgba(39, 40, 34, 0.6);
+  margin: auto;
+  max-width: 700px;
+  padding: 20px;
+  position: relative;
+  z-index: 10; }
+  .modal p {
+    margin-top: 0; }
+  .modal h5 {
+    margin: 0; }
+
+.overlay {
+  background: rgba(17, 17, 17, 0.4);
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 10; }
+
+.modal-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  -webkit-transform: scale(1.3);
+          transform: scale(1.3);
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  visibility: hidden;
+  width: 100%;
+  z-index: 99; }
