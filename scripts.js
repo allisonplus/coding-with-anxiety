@@ -81,3 +81,12 @@ var feed = new Instafeed({
 	template: '<a class="insta-link" href="{{link}}"><img src="{{image}}" /></a>'
 });
 feed.run();
+$(function () {
+	$('.show-info').on('click', function () {
+		$('.modal-container').addClass('show');
+	});
+
+	$('.close-button').on('click', function () {
+		$('.modal-container').removeClass('show');
+	});
+});
