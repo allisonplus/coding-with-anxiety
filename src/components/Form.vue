@@ -2,7 +2,7 @@
   <form v-on:submit.prevent="pressSubmit">
     <!-- <input type="text" name="username" placeholder="What's your name?" /> -->
     <input v-model="anxietyType" type="text" name="currentItem" placeholder="What's your anxiety?" />
-    <button>Submit</button>
+    <button class="submit-btn">Submit</button>
   </form>
 </template>
 

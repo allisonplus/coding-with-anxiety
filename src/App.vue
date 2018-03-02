@@ -6,13 +6,14 @@
 </template>
 
 <script>
-import firebase from './firebase.js';
+import firebase from 'firebase';
 import Content from './components/Content';
 
 export default {
   name: 'App',
   components: {
     Content,
+    firebase,
   },
 };
 </script>
