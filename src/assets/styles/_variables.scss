@@ -1,0 +1,77 @@
+$bg: #272822;
+$white: #fff;
+$black: #111;
+
+$monospace: "Fira Mono", monospace;
+$font-sans: "Open Sans", sans-serif;
+
+$large-desktop: 1680px;
+$desktop: 1366px;
+$tablet-landscape: 1024px;
+$tablet-portrait: 768px;
+$phone-landscape: 640px;
+$phone-portrait: 360px;
+
+// Size mixin.
+@mixin size($value) {
+	$width: nth($value, 1);
+	$height: $width;
+
+	@if length($value) > 1 {
+		$height: nth($value, 2);
+	}
+
+	@if is-size($height) {
+		height: $height;
+	} @else {
+		@warn "`#{$height}` is not a valid length for the `$height` parameter in the `size` mixin.";
+	}
+
+	@if is-size($width) {
+		width: $width;
+	} @else {
+		@warn "`#{$width}` is not a valid length for the `$width` parameter in the `size` mixin.";
+	}
+}
+
+//--------------------------------------------------------------
+// MEDIA QUERIES
+//--------------------------------------------------------------
+/// Pass Sass Map(s) or Number(s) to create custom media queries.
+///
+/// @example - scss  Usage
+///   @include media(null, $tablet-portrait) {};
+///
+/// @example - css Output
+///   @media and screen (max-width: $tablet-portrait)
+@mixin media($min, $max) {
+
+	// Create the media query.
+	@if $min == null {
+		@media only screen and (max-width: $max) {
+			@content;
+		}
+	} @else if $max == null {
+		@media only screen and (min-width: $min) {
+			@content;
+		}
+	} @else {
+		@media only screen and (min-width: $min) and (max-width: $max) {
+			@content;
+		}
+	}
+}
+
+/// Shorthand mixin for offset positioning
+/// @param {String} $position - Either `relative`, `absolute` or `fixed`
+/// @param {Length} $top [null] - Top offset
+/// @param {Length} $right [null] - Right offset
+/// @param {Length} $bottom [null] - Bottom offset
+/// @param {Length} $left [null] - Left offset
+@mixin position($position, $top: null, $right: null, $bottom: null, $left: null) {
+  bottom: $bottom;
+  left: $left;
+  position: $position;
+  right: $right;
+  top: $top;
+}
