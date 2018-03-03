@@ -6,7 +6,7 @@
     </form>
 
       <ul class="list">
-        <li v-bind:key="anxiety.key" v-for="anxiety in anxieties">{{anxiety.thought}}</li>
+        <li v-bind:key="anxiety.key" v-for="anxiety in anxieties" v-if="anxiety.status">{{anxiety.thought}}</li>
       </ul>
   </section>
 </template>
@@ -22,6 +22,7 @@ export default {
     return {
       newAnxiety: {
         thought: '',
+        status: false,
       },
     };
   },
