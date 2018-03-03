@@ -13,7 +13,8 @@
 
 <script>
 import firebase from '../firebase';
-let anxietiesList = firebase.database().ref('anxieties');
+
+const anxietiesList = firebase.database().ref('anxieties');
 
 export default {
   name: 'Form',
