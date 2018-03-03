@@ -5,9 +5,15 @@
     <div class="modal-container" v-bind:class="{ active: isActive }">
       <div class="overlay"></div>
       <div class="modal">
-        <button class="close-button" v-bind:class="{ active: isActive }" v-on:click="isActive = !isActive"><i class="fa fa-times"></i></button>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit!</p>
-        <h5>Created by <a href="http://www.allisontarr.com">Allison Tarr</a>.</h5>
+        <button class="close-button" v-bind:class="{ active: isActive }" v-on:click="closeModal" @keyup.esc="closeModal"><i class="fa fa-times"></i></button>
+        <h3>Resources</h3>
+        <ul class="resource-list">
+          <li><a href="https://www.crisistextline.org/">Crisis Text Line</a></li>
+          <li><a href="https://www.if-me.org/">Crisis Text Line</a></li>
+          <li><a href="https://www.imalive.org/">I'm Alive</a></li>
+          <li><a href="https://osmihelp.org/">Open Source Mental Illness</a></li>
+        </ul>
+        <h5>Created with feels by <a href="http://www.allisontarr.com">Allison Tarr</a>.</h5>
       </div>
     </div>
   </section>
@@ -22,6 +28,16 @@ export default {
     return {
       isActive: false,
     };
+  },
+  created() {
+    window.addEventListener('keyup', this.closeModal);
+  },
+  methods: {
+    closeModal() {
+      if (this.isActive) {
+        this.isActive = !this.isActive;
+      }
+    },
   },
 };
 </script>
