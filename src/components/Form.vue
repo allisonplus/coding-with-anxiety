@@ -6,7 +6,7 @@
     </form>
 
       <ul class="list">
-        <li v-for="anxiety in anxieties">{{anxiety.thought}}</li>
+        <li v-bind:key="anxiety.key" v-for="anxiety in anxieties">{{anxiety.thought}}</li>
       </ul>
   </section>
 </template>
