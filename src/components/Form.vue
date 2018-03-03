@@ -2,11 +2,11 @@
   <section class="wrapper-form">
     <form id="anxiety-share" class="anxiety-form" v-on:submit.prevent="addAnxiety">
       <label for="Your Anxiety">Your Anxiety</label>
-      <input type="text" id="yourAnxiety" v-model="newAnxiety.anxiety">
+      <input type="text" id="yourAnxiety" v-model="newAnxiety.thought">
     </form>
 
       <ul class="list">
-        <li v-for="anxiety in anxieties">{{anxiety.anxiety}}</li>
+        <li v-for="anxiety in anxieties">{{anxiety.thought}}</li>
       </ul>
   </section>
 </template>
@@ -20,7 +20,7 @@ export default {
   data() {
     return {
       newAnxiety: {
-        anxiety: '',
+        thought: '',
       },
     };
   },
@@ -30,7 +30,7 @@ export default {
   methods: {
     addAnxiety() {
       anxietiesList.push(this.newAnxiety);
-      this.newAnxiety.anxiety = '';
+      this.newAnxiety.thought = '';
     },
   },
 };
