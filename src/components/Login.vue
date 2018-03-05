@@ -29,15 +29,28 @@
     },
     methods: {
       signIn() {
-        firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(
-          (user) => {
-            console.log(user, 'woo you did it!');
-          },
-          (error) => {
-            console.log(error, 'Uh oh...');
-          },
-        );
+        firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+          .then(() => firebase.auth().signInWithEmailAndPassword(this.email, this.password))
+          .then(() => {
+            this.$router.replace('dashboard');
+          })
+          /* eslint-disable no-unused-vars */
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+          });
       },
+      userCheck() {
+        firebase.auth().onAuthStateChanged((user) => {
+          if (user) {
+            this.$router.replace('dashboard');
+          } else {
+          }
+        });
+      },
+    },
+    mounted() {
+      this.userCheck();
     },
 };
 </script>
