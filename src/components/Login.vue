@@ -57,6 +57,7 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+@import '../assets/styles/_variables.scss';
 
 h1 {
   margin-top: 0;
@@ -64,7 +65,7 @@ h1 {
 }
 
 #app .dashboard {
-    background-color: #272822;
+    background-color: $bg;
     height: 100vh;
 }
 
@@ -90,7 +91,7 @@ input[type="submit"] {
 }
 
 .login {
-  background-color: #e5e5e5;
+  background-color: $mercury;
   border-radius: 5px;
   box-shadow: 0 0 10px 0 #888;
   margin: 10% auto;

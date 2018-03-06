@@ -1,9 +1,13 @@
 <template>
    <div class="dashboard">
-    <h1>Dashboard</h1>
+    <header>
+      <div class="wrapper">
+        <h1>Dashboard</h1>
+        <input class="logout" type="submit" value="Exit" v-on:click="logOut">
+      </div>
+    </header>
 
     <div class="wrapper">
-
       <div class="table">
         <div class="row header">
           <span class="cell">Anxiety Thought</span>
@@ -18,14 +22,11 @@
       </div><!--.table-->
     </div><!--.wrapper-->
 
-    <input type="submit" value="Logout" v-on:click="logOut">
    </div>
 </template>
 
 <script>
   import firebase from 'firebase';
-
-  const db = firebase.database();
 
   const anxietiesList = firebase.database().ref('anxieties');
 
@@ -44,9 +45,9 @@
           this.$router.replace('login');
         });
       },
-      updateStatus: function (anxiety) {
+      updateStatus(anxiety) {
           const childKey = anxiety['.key'];
-          const copy = {...anxiety};
+          const copy = { ...anxiety };
 
           // Delete `.key` property from the anxiety.
           delete copy['.key'];
@@ -76,28 +77,51 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+@import '../assets/styles/_variables.scss';
 
 #app .dashboard {
-  background-color: #272822;
-  color: #e5e5e5;
+  background-color: $bg;
+  font-family: $font-sans;
   height: 100vh;
   padding: 40px;
 }
 
-h1 {
-  margin: 0;
-  text-align: center;
-}
-
+// Wrapper.
 .wrapper {
-  padding: 40px 40px 0;
   margin: 20px auto;
-  max-width: 800px;
-}
+  max-width: 900px;
 
+  header & {
+    display: flex;
+    justify-content: space-evenly;
+  }
+} // .wrapper
+
+// Header.
+header {
+  h1 {
+    color: $white;
+    display: inline-block;
+    margin: 0;
+    text-align: center;
+  }
+
+  // Logout button.
+  .logout {
+    background-color: $white;
+    border: none;
+    font-family: $monospace;
+    transition: background-color 0.2s linear;
+
+    &:hover {
+      background-color: lighten($electric, 40%);
+    }
+  }
+} // header
+
+// Table w/ data.
 .table {
-  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-  color: #000;
+  color: $black;
   display: table;
   margin: 0 0 40px 0;
   text-align: center;
@@ -106,21 +130,18 @@ h1 {
 
 .row {
   display: table-row;
-  background: lighten(#00DBDE, 50%);
+  background-color: lighten($robin, 50%);
 
   &:nth-of-type(odd) {
-    background: lighten(#00DBDE, 42%);
+    background-color: lighten($robin, 42%);
   }
 
   &.header {
-    background: linear-gradient(60deg, #00DBDE 25%, #FC00FF 85%);
+    background: linear-gradient(60deg, $robin 25%, $electric 85%);
     font-weight: normal;
     letter-spacing: 2px;
     text-transform: uppercase;
-  }
-
-  &.false {
-    background-color: teal;
+    font-family: $monospace;
   }
 }
 
@@ -129,7 +150,7 @@ h1 {
     display: table-cell;
 
     &:first-of-type {
-      border-right: 2px solid #00DBDE;
+      border-right: 2px solid $robin;
       text-align: left;
     }
 }
