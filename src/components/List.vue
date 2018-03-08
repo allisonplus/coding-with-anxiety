@@ -1,9 +1,8 @@
 <template>
-  <section class="wrapper-form">
-    <form id="anxiety-share" class="anxiety-form" v-on:submit.prevent="addAnxiety">
-      <label for="Your Anxiety">Submit Your Anxiety</label>
-      <input type="text" id="yourAnxiety" v-model="newAnxiety.thought">
-    </form>
+  <section class="list-wrapper">
+      <ul class="list">
+        <li v-bind:key="anxiety.key" v-for="anxiety in anxieties" v-if="anxiety.status"><span class="data-prompt">></span> {{anxiety.thought}}</li>
+      </ul>
   </section>
 </template>
 
@@ -13,23 +12,32 @@ import firebase from '../firebase';
 const anxietiesList = firebase.database().ref('anxieties');
 
 export default {
-  name: 'Form',
+  name: 'List',
   data() {
     return {
-      newAnxiety: {
-        thought: '',
-        status: false,
-      },
+      scrollingList: [],
+      // Iterate over anxieties list.
+      // Take reverse chronological item.
+      // Add to empty array.
+      // Repeat.
     };
   },
   firebase: {
      anxieties: anxietiesList,
+     // test: anxietiesList,
   },
   methods: {
-    addAnxiety() {
-      anxietiesList.push(this.newAnxiety);
-      this.newAnxiety.thought = '';
+    buildList() {
+
     },
+  },
+  // Explicitly set binding data to firebase as an array.
+  created() {
+      this.$bindAsArray('anxieties', anxietiesList);
+  },
+  mounted() {
+    // console.log(this.anxieties);
+    this.buildList();
   },
 };
 
@@ -37,13 +45,6 @@ export default {
 
 <style scoped lang="scss">
 @import '../assets/styles/_variables.scss';
-
-.list-wrapper {
-  // height: 100px; // window
-  // margin: auto;
-  overflow: hidden;
-  // position: relative;
-}
 
 .list {
   background-color: #222;
