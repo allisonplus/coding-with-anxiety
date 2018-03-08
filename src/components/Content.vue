@@ -11,7 +11,10 @@
             </div> <!--.social-->
           </header>
 
-          <Form/>
+          <div class="anxiety-wrapper">
+            <List/>
+            <Form/>
+          </div><!--.anxiety-wrapper-->
         </div> <!--.wrapper-->
       </section>
 
@@ -25,6 +28,7 @@
 import Form from './Form';
 import Instafeed from './Instafeed';
 import Modal from './Modal';
+import List from './List';
 
 export default {
   name: 'Content',
@@ -32,6 +36,7 @@ export default {
     Form,
     Instafeed,
     Modal,
+    List,
   },
   data() {
     return {

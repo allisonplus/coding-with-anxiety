@@ -7,7 +7,7 @@
       <div class="modal">
         <button class="close-button" v-bind:class="{ active: isActive }" v-on:click="closeModal" @keyup.esc="closeModal"><i class="fa fa-times"></i></button>
         <h3>Resources</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae earum laudantium, officiis quas nulla perferendis, deleniti labore error mollitia repellat, ipsa unde dignissimos. Pariatur eos totam autem error vero cupiditate.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae earum laudantium, officiis quas nulla perferendis, deleniti.</p>
         <ul class="resource-list">
           <li><a href="https://www.crisistextline.org/">Crisis Text Line</a></li>
           <li><a href="https://www.if-me.org/">Crisis Text Line</a></li>
