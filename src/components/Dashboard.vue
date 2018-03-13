@@ -12,11 +12,13 @@
         <div class="row header">
           <span class="cell">Anxiety Thought</span>
           <span class="cell">Approved?</span>
+          <span class="cell">Delete</span>
         </div>
 
         <div class="row" v-for="anxiety in sortedAnxieties" :key="anxiety['.key']">
           <span class="cell">{{anxiety.thought}}</span>
           <span class="cell"><input type="checkbox" v-model="anxiety.status" v-bind:id="anxiety.id" v-on:click="updateStatus(anxiety)">{{anxiety.status}}</span>
+          <span class="cell"><a @click.prevent="removeAnxiety(anxiety)" href="" class="delete">X</a></span>
         </div>
 
       </div><!--.table-->
@@ -55,6 +57,11 @@
 
           // Set the updated anxiety value.
           this.$firebaseRefs.anxieties.child(childKey).set(copy);
+      },
+      removeAnxiety(anxiety) {
+        const childKey = anxiety['.key'];
+        this.$firebaseRefs.anxieties.child(childKey).remove();
+        this.anxieties.splice(this.anxieties.indexOf(anxiety), 1);
       },
     },
     // Explicitly set binding data to firebase as an array.

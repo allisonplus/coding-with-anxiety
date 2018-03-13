@@ -54,6 +54,7 @@ export default {
   list-style-type: none;
   margin: 0 0 16px;
   max-width: 465px;
+  overflow: hidden;
   padding: 12px;
 
   li {
