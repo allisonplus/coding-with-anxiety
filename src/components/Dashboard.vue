@@ -64,7 +64,6 @@
     computed: {
       sortedAnxieties() {
         const newArray = this.anxieties.sort((anxiety) => {
-          /* eslint-disable no-else-return */
           if (anxiety.status) {
             return 1;
           }

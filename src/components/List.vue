@@ -57,7 +57,7 @@ export default {
   padding: 12px;
 
   li {
-    // animation: scroll 15s cubic-bezier(0.645, 0.045, 0.355, 1) infinite;
+    animation: scroll 15s cubic-bezier(0.645, 0.045, 0.355, 1) infinite;
     color: white;
     opacity: 1;
   }
