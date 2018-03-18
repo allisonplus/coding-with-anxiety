@@ -1,8 +1,29 @@
 <template>
   <section class="list-wrapper">
-      <ul class="list">
-        <li v-bind:key="anxiety.key" v-for="anxiety in anxieties" v-if="anxiety.status"><span class="data-prompt">></span> {{anxiety.thought}}</li>
-      </ul>
+      <transition-group class='list' tag="ul">
+        <li v-for="(anxiety, index) in anxieties" v-if="anxiety.status" class='slide' v-bind:key="index">
+        <span class="data-prompt">></span>
+        <vue-typer v-if="index===0"
+          :text='anxiety.thought'
+          :repeat='0'
+          :shuffle='false'
+          initial-action='typing'
+          :pre-type-delay='75'
+          :type-delay='135'
+          :pre-erase-delay='2000'
+          :erase-delay='200'
+          erase-style='backspace'
+          :erase-on-complete='false'
+          caret-animation='blink'
+          >
+        </vue-typer>
+          <p v-else>{{anxiety.thought}}</p>
+        </li>
+      </transition-group>
+      <div class='carousel-controls'>
+        <button class='carousel-button' @click="previous">Previous</button>
+        <button class='carousel-button' @click="next">Next</button>
+      </div>
   </section>
 </template>
 
@@ -10,57 +31,64 @@
 import firebase from '../firebase';
 
 const anxietiesList = firebase.database().ref('anxieties');
+// $firebaseRefs
 
 export default {
   name: 'List',
   data() {
     return {
-      scrollingList: [],
-      // Iterate over anxieties list.
-      // Take reverse chronological item.
-      // Add to empty array.
-      // Repeat.
     };
   },
   firebase: {
      anxieties: anxietiesList,
-     // test: anxietiesList,
   },
   methods: {
-    buildList() {
-
+    next() {
+      const first = this.anxieties.shift();
+      this.anxieties = this.anxieties.concat(first);
+      if (this.anxieties[0].status === false) {
+        this.next();
+      } else { return; }
+    },
+    previous() {
+      const last = this.anxieties.pop();
+      this.anxieties = [last].concat(this.anxieties);
+      if (this.anxieties[0].status === false) {
+        this.previous();
+      } else { return; }
     },
   },
   // Explicitly set binding data to firebase as an array.
   created() {
       this.$bindAsArray('anxieties', anxietiesList);
   },
-  mounted() {
-    // console.log(this.anxieties);
-    this.buildList();
-  },
 };
 
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import '../assets/styles/_variables.scss';
 
 .list {
   background-color: #222;
   border: 2px solid #bbb;
   border-top: 12px solid #bbb;
-  color: $black;
   list-style-type: none;
   margin: 0 0 16px;
-  max-width: 465px;
+  max-width: 400px;
   overflow: hidden;
   padding: 12px;
 
   li {
-    animation: scroll 15s cubic-bezier(0.645, 0.045, 0.355, 1) infinite;
+    align-items: center;
     color: white;
-    opacity: 1;
+    display: flex;
+    padding: 10px;
+    transition: transform 0.4s linear;
+
+    &:not(:first-of-type) {
+      opacity: 0;
+    }
   }
 
   .data-prompt {
@@ -68,11 +96,17 @@ export default {
     opacity: 0.4;
   }
 
-  li:not(:last-of-type) {
-    margin-bottom: 12px;
+  p {
+    display: inline-block;
   }
 }
 
+.vue-typer {
+
+  .custom.char {
+    color: #fff;
+  }
+}
 
 .anxiety-form {
   margin-top: 50px;

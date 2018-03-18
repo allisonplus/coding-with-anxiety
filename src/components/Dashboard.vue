@@ -17,8 +17,8 @@
 
         <div class="row" v-for="anxiety in sortedAnxieties" :key="anxiety['.key']">
           <span class="cell">{{anxiety.thought}}</span>
-          <span class="cell"><input type="checkbox" v-model="anxiety.status" v-bind:id="anxiety.id" v-on:click="updateStatus(anxiety)">{{anxiety.status}}</span>
-          <span class="cell"><a @click.prevent="removeAnxiety(anxiety)" href="" class="delete">X</a></span>
+          <span class="cell"><input type="checkbox" v-model="anxiety.status" v-bind:id="anxiety.id" v-on:click="updateStatus(anxiety)"><span class="boolean">{{anxiety.status}}</span></span>
+          <span class="cell"><a @click.prevent="removeAnxiety(anxiety)" href="#" class="delete">&cross;</a></span>
         </div>
 
       </div><!--.table-->
@@ -159,6 +159,21 @@ header {
       border-right: 2px solid $robin;
       text-align: left;
     }
+}
+
+input[type='checkbox'] {
+  margin-right: 8px;
+
+}
+
+.boolean {
+  text-transform: capitalize;
+  vertical-align: middle;
+}
+
+a.delete {
+  text-decoration: none;
+  color: $helio;
 }
 
 </style>
