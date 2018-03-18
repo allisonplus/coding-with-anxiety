@@ -38,40 +38,6 @@ export default {
 <style scoped lang="scss">
 @import '../assets/styles/_variables.scss';
 
-.list-wrapper {
-  // height: 100px; // window
-  // margin: auto;
-  overflow: hidden;
-  // position: relative;
-}
-
-.list {
-  background-color: #222;
-  border: 2px solid #bbb;
-  border-top: 12px solid #bbb;
-  color: $black;
-  list-style-type: none;
-  margin: 0 0 16px;
-  max-width: 465px;
-  padding: 12px;
-
-  li {
-    // animation: scroll 15s cubic-bezier(0.645, 0.045, 0.355, 1) infinite;
-    color: white;
-    opacity: 1;
-  }
-
-  .data-prompt {
-    margin-right: 8px;
-    opacity: 0.4;
-  }
-
-  li:not(:last-of-type) {
-    margin-bottom: 12px;
-  }
-}
-
-
 .anxiety-form {
   margin-top: 50px;
 

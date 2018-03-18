@@ -1,25 +1,27 @@
 <template>
   <section class="list-wrapper">
-      <transition-group class='list' tag="ul">
-        <li v-for="(anxiety, index) in anxieties" v-if="anxiety.status" class='slide' v-bind:key="index">
-        <span class="data-prompt">></span>
-        <vue-typer v-if="index===0"
-          :text='anxiety.thought'
-          :repeat='0'
-          :shuffle='false'
-          initial-action='typing'
-          :pre-type-delay='75'
-          :type-delay='135'
-          :pre-erase-delay='2000'
-          :erase-delay='200'
-          erase-style='backspace'
-          :erase-on-complete='false'
-          caret-animation='blink'
-          >
-        </vue-typer>
+    <ul class="list">
+      <transition-group name="list-transition" tag="span">
+        <li v-for="(anxiety, index) in anxieties" v-if="anxiety.status" class='slide' :key="anxiety['.key']">
+          <span class="data-prompt">></span>
+          <vue-typer v-if="index===0"
+            :text='anxiety.thought'
+            :repeat='0'
+            :shuffle='false'
+            initial-action='typing'
+            :pre-type-delay='75'
+            :type-delay='135'
+            :pre-erase-delay='2000'
+            :erase-delay='200'
+            erase-style='backspace'
+            :erase-on-complete='false'
+            caret-animation='blink'
+            >
+          </vue-typer>
           <p v-else>{{anxiety.thought}}</p>
         </li>
       </transition-group>
+      </ul>
       <div class='carousel-controls'>
         <button class='carousel-button' @click="previous">Previous</button>
         <button class='carousel-button' @click="next">Next</button>
@@ -31,7 +33,6 @@
 import firebase from '../firebase';
 
 const anxietiesList = firebase.database().ref('anxieties');
-// $firebaseRefs
 
 export default {
   name: 'List',
