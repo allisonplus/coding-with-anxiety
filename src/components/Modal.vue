@@ -3,9 +3,9 @@
     <div class="show-info" v-bind:class="{ active: isActive }" v-on:click="isActive = !isActive" ><span>?</span></div>
 
     <div class="modal-container" v-bind:class="{ active: isActive }">
-      <div class="overlay"></div>
+      <div class="overlay" v-on:click="closeModal"></div>
       <div class="modal">
-        <button class="close-button" v-bind:class="{ active: isActive }" v-on:click="closeModal" @keyup.esc="closeModal"><i class="fa fa-times"></i></button>
+        <button class="close-button" v-bind:class="{ active: isActive }" v-on:click="closeModal"><i class="fa fa-times"></i></button>
         <h3>Resources</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae earum laudantium, officiis quas nulla perferendis, deleniti.</p>
         <ul class="resource-list">
@@ -31,7 +31,11 @@ export default {
     };
   },
   created() {
-    window.addEventListener('keyup', this.closeModal);
+    window.addEventListener('keyup', (event) => {
+      if (event.keyCode === 27) {
+        this.closeModal();
+      }
+    });
   },
   methods: {
     closeModal() {
