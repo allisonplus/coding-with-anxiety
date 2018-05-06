@@ -37,7 +37,7 @@ export default {
       this.newAnxiety.thought = '';
 
       this.anxietySubmitted = true;
-      setTimeout( () => {
+      setTimeout(() => {
         this.anxietySubmitted = false;
       }, 1500);
     },

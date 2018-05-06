@@ -23,7 +23,7 @@
       </transition-group>
       </ul>
       <div class='carousel-controls'>
-        <button class='carousel-button' @click="next">Next</button>
+        <button class='carousel-button' @click="next">// Read More</button>
       </div>
   </section>
 </template>
@@ -141,14 +141,22 @@ export default {
 
 .carousel-button {
   background-color: $bg;
-  border-radius: 3px;
-  border: 1px dotted $mercury;
-  color: $white;
+  border: none;
+  color: $zsh-text;
+  border-radius: 2px;
+  font-style: italic;
+  padding: 4px 10px;
   transition: background-color 0.4 ease-in-out, color 0.4 ease-in-out;
 
   &:hover {
-    background-color: $mercury;
-    color: $bg;
+    background-color: lighten($bg, 15%);
+    color: lighten($zsh-text, 15%);
+  }
+
+  &:focus,
+  &:active {
+    background-color: $helio;
+    color: $robin;
   }
 }
 
