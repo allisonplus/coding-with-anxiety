@@ -96,7 +96,10 @@ h1 {
 
 .line:nth-of-type(2) {
   font-size: 0;
-  height: 1.5rem;
+
+  @include media($phone-landscape, null) {
+    height: 1.5rem;
+  }
 }
 
 .path,
@@ -107,18 +110,18 @@ h1 {
 }
 
 .path {
-  background-color: $zsh-path-background;
+  background-color: $zsh-path-bg;
   padding: 0 10px;
 }
 
 .branch {
-  background-color: #fed888;
+  background-color: $zsh-branch-bg;
   padding-right: 12px;
   color: $bg;
 
   &:before {
     border: 14px solid transparent;
-    border-left-color: $zsh-path-background;
+    border-left-color: $zsh-path-bg;
     content: '';
     display: inline-block;
     height: 0;
@@ -130,7 +133,7 @@ h1 {
 .command {
   &:before {
       border: 16px solid transparent;
-      border-left-color: #fed888;
+      border-left-color: $zsh-branch-bg;
       content: '';
       display: inline-block;
       height: 0;
@@ -140,7 +143,11 @@ h1 {
 }
 
 .anxiety-wrapper {
-  margin-top: 120px;
+  margin: 40px 0 18px;
+
+  @include media($tablet-portrait, null) {
+    margin: 120px 0 0;
+  }
 }
 
 // Social icons.

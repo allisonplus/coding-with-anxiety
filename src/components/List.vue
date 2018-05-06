@@ -72,15 +72,23 @@ export default {
 @import '../assets/styles/_variables.scss';
 
 .list-wrapper {
-  margin-top: 40px;
+  margin-top: 16px;
+
+  @include media($phone-landscape, null) {
+    margin-top: 40px;
+  }
 }
 
 .list {
   list-style-type: none;
   margin: 0 0 20px;
-  min-height: 200px;
+  min-height: 50px;
   overflow: hidden;
   padding: 0 12px 12px 0;
+
+  @include media($tablet-portrait, null) {
+    min-height: 200px;
+  }
 
   li {
     display: flex;

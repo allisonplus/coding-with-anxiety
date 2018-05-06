@@ -49,14 +49,19 @@ export default {
 
 // Container around modal content.
 .modal-container {
-  @include size(100% 100%);
-  @include position(fixed, 0, null, null, 0);
+  @include size(100% auto);
+  @include position(fixed, 5%, null, null, 0);
 
   display: flex;
   opacity: 0;
   transition: all 0.3s ease;
   visibility: hidden;
   z-index: 99;
+
+  @include media($tablet-landscape, null) {
+    @include size(100% 100%);
+    @include position(fixed, 0, null, null, 0);
+  }
 
   &.active {
     opacity: 1;
@@ -77,11 +82,16 @@ export default {
     background: rgba($mercury, 0.9);
     box-shadow: 3px 4px 8px rgba($bg, 0.6);
     color: $black;
-    margin: auto;
-    max-width: 1000px;
+    margin: 0 auto;
+    max-width: 90%;
     padding: 20px;
     position: relative;
     z-index: 10;
+
+    @include media($tablet-landscape, null) {
+      margin: auto;
+      max-width: 1000px;
+    }
 
     h3,
     p {
