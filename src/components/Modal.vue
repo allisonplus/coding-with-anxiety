@@ -83,6 +83,7 @@ export default {
     position: relative;
     z-index: 10;
 
+    h3,
     p {
       margin-top: 0;
     }

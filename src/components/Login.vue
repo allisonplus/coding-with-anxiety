@@ -45,6 +45,7 @@
           if (user) {
             this.$router.replace('dashboard');
           } else {
+            // eslint-disable-next-line
           }
         });
       },

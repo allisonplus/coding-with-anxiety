@@ -70,6 +70,7 @@
     },
     computed: {
       sortedAnxieties() {
+        // eslint-disable-next-line
         const newArray = this.anxieties.sort((anxiety) => {
           if (anxiety.status) {
             return 1;
