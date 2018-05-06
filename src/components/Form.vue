@@ -42,25 +42,27 @@ export default {
 .anxiety-form {
   border-top: 1px dotted $zsh-text;
   border-bottom: 1px dotted $zsh-text;
-  padding: 3px 0;
+  padding: 3px 0 7px;
 
   .data-prompt {
     color: $zsh-text;
-    vertical-align: super;
     font-size: 18px;
   }
 
   .blinking-cursor {
     @include size(2px 25px);
 
-    animation-name: blinker;
-    animation-iteration-count: infinite;
-    animation-timing-function: cubic-bezier(1,0,0,1);
     animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-name: blinker;
+    animation-timing-function: cubic-bezier(1,0,0,1);
     background: $zsh-text;
     border-radius: 3px;
     display: inline-block;
+    left: 5px;
     margin-left: 6px;
+    position: relative;
+    top: 6px;
   }
 
   @keyframes blinker {
@@ -76,8 +78,17 @@ export default {
     border-radius: 0;
     border: none;
     box-shadow: none;
+    color: $mercury;
+    padding: 8px;
     vertical-align: middle;
     white-space: normal;
+
+    &:focus,
+    &:active {
+      outline: 1px dotted $zsh-text;
+      position: relative;
+      left: -10px;
+    }
   }
 }
 
