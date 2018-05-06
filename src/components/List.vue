@@ -9,8 +9,8 @@
             :repeat='0'
             :shuffle='false'
             initial-action='typing'
-            :pre-type-delay='75'
-            :type-delay='135'
+            :pre-type-delay='55'
+            :type-delay='35'
             :pre-erase-delay='2000'
             :erase-delay='200'
             erase-style='backspace'
@@ -23,7 +23,6 @@
       </transition-group>
       </ul>
       <div class='carousel-controls'>
-        <button class='carousel-button' @click="previous">Previous</button>
         <button class='carousel-button' @click="next">Next</button>
       </div>
   </section>
@@ -49,6 +48,7 @@ export default {
       this.anxieties = this.anxieties.concat(first);
       if (this.anxieties[0].status === false) {
         this.next();
+        // eslint-disable-next-line
       } else { return; }
     },
     previous() {
@@ -56,6 +56,7 @@ export default {
       this.anxieties = [last].concat(this.anxieties);
       if (this.anxieties[0].status === false) {
         this.previous();
+        // eslint-disable-next-line
       } else { return; }
     },
   },
@@ -70,27 +71,27 @@ export default {
 <style lang="scss">
 @import '../assets/styles/_variables.scss';
 
+.list-wrapper {
+  margin-top: 40px;
+}
+
 .list {
-  background-color: #222;
-  border: 2px solid #bbb;
-  border-top: 12px solid #bbb;
   list-style-type: none;
-  margin: 0 0 16px;
-  max-width: 400px;
+  margin: 0 0 20px;
+  min-height: 200px;
   overflow: hidden;
-  padding: 12px;
+  padding: 0 12px 12px 0;
 
   li {
-    align-items: center;
-    color: white;
     display: flex;
     padding: 10px;
     transition: transform 0.4s linear;
+    word-break: break-all;
 
     &:not(:first-of-type) {
-      opacity: 0;
+      display: none;
     }
-  }
+  } // li
 
   .data-prompt {
     margin-right: 8px;
@@ -99,21 +100,47 @@ export default {
 
   p {
     display: inline-block;
+    margin: 0;
   }
-}
+} // .list
 
 .vue-typer {
 
   .custom.char {
-    color: #fff;
+    color: $white;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+    word-break: break-all;
+    word-wrap: break-word;
   }
+
+  &.typed {
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+        /* Styles specific to typed characters
+           i.e. characters to the left of the caret */
+      }
+      &.selected {
+        /* Styles specific to selected characters
+           i.e. characters to the right of the caret while VueTyper's
+                'eraseStyle' is set to a selection-based style */
+      }
 }
 
-.anxiety-form {
-  margin-top: 50px;
+.carousel-button {
+  background-color: $bg;
+  border-radius: 3px;
+  border: 1px dotted $mercury;
+  color: $white;
+  transition: background-color 0.4 ease-in-out, color 0.4 ease-in-out;
 
-  label {
-    margin-right: 16px;
+  &:hover {
+    background-color: $mercury;
+    color: $bg;
   }
 }
 
