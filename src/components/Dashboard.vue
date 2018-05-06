@@ -61,7 +61,6 @@
       removeAnxiety(anxiety) {
         const childKey = anxiety['.key'];
         this.$firebaseRefs.anxieties.child(childKey).remove();
-        this.anxieties.splice(this.anxieties.indexOf(anxiety), 1);
       },
     },
     // Explicitly set binding data to firebase as an array.
