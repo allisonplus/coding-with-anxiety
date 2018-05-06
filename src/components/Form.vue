@@ -3,7 +3,11 @@
     <form id="anxiety-share" class="anxiety-form" v-on:submit.prevent="addAnxiety">
       <label for="Your Anxiety">Submit Your Anxiety</label>
        <span class="data-prompt"><i class="fas fa-angle-double-right"></i></span><span class="blinking-cursor"></span>
-       <input type="text" id="yourAnxiety" v-model="newAnxiety.thought">
+       <input type="text" id="yourAnxiety" v-model="newAnxiety.thought" autofocus autocomplete="off">
+
+       <transition name="slide-fade">
+         <p v-if="anxietySubmitted" class="submitted">Anxiety submitted for approval</p>
+       </transition>
     </form>
   </section>
 </template>
@@ -21,6 +25,7 @@ export default {
         thought: '',
         status: false,
       },
+      anxietySubmitted: false,
     };
   },
   firebase: {
@@ -30,6 +35,11 @@ export default {
     addAnxiety() {
       anxietiesList.push(this.newAnxiety);
       this.newAnxiety.thought = '';
+
+      this.anxietySubmitted = true;
+      setTimeout( () => {
+        this.anxietySubmitted = false;
+      }, 1500);
     },
   },
 };
@@ -49,26 +59,6 @@ export default {
     font-size: 18px;
   }
 
-  .blinking-cursor {
-    @include size(2px 25px);
-
-    animation-duration: 1s;
-    animation-iteration-count: infinite;
-    animation-name: blinker;
-    animation-timing-function: cubic-bezier(1,0,0,1);
-    background: $zsh-text;
-    border-radius: 3px;
-    display: inline-block;
-    left: 5px;
-    margin-left: 6px;
-    position: relative;
-    top: 6px;
-  }
-
-  @keyframes blinker {
-    from { opacity: 1.0; } to { opacity: 0.0; }
-  }
-
   label {
     display: block;
   }
@@ -86,9 +76,25 @@ export default {
     &:focus,
     &:active {
       outline: 1px dotted $zsh-text;
-      position: relative;
-      left: -10px;
     }
+  }
+
+  .slide-fade-enter-active,
+  .slide-fade-leave-active {
+    transition: all 0.5s ease;
+  }
+
+  .slide-fade-enter,
+  .slide-fade-leave-to  {
+    opacity: 0;
+  }
+
+  .submitted {
+    background-color: $helio;
+    color: $mercury;
+    display: inline-block;
+    margin: 0;
+    padding: 0 8px;
   }
 }
 
