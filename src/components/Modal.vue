@@ -7,12 +7,14 @@
       <div class="modal">
         <button class="close-button" v-bind:class="{ active: isActive }" v-on:click="closeModal"><i class="fa fa-times"></i></button>
         <h3>Resources</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae earum laudantium, officiis quas nulla perferendis, deleniti.</p>
+        <p>I started this site as a way to gather others' anxieties in order to help people externalize hidden fears as well as to help others feel less alone in their anxiety.</p>
+        <p>Not someone who codes or is involved in tech? You likely still have anxieties! You don't have to be in tech to add to the melting pot here.</p>
         <ul class="resource-list">
-          <li><a href="https://www.crisistextline.org/">Crisis Text Line</a></li>
-          <li><a href="https://www.if-me.org/">Crisis Text Line</a></li>
-          <li><a href="https://www.imalive.org/">I'm Alive</a></li>
           <li><a href="https://osmihelp.org/">Open Source Mental Illness</a></li>
+          <li><a href="http://selfcare.tech/">Selfcare.tech</a></li>
+          <li><a href="https://www.crisistextline.org/">Crisis Text Line</a></li>
+          <li><a href="https://www.if-me.org/">If Me</a></li>
+          <li><a href="https://www.imalive.org/">I'm Alive</a></li>
         </ul>
         <h5>Created with feels by <a href="http://www.allisontarr.com">Allison Tarr</a>.</h5>
       </div>
