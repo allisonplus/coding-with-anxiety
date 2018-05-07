@@ -33,6 +33,31 @@ import Instafeed from './Instafeed';
 import Modal from './Modal';
 import List from './List';
 
+function getDateTime() {
+    const now = new Date();
+    const year = now.getFullYear();
+    const day = now.getDate();
+    const hour = now.getHours();
+    const minute = now.getMinutes();
+    const second = now.getSeconds();
+    let seconds = '';
+
+    seconds = second <= 10 ? `0${second}` : second;
+
+    const weekDay = [
+      'Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat',
+    ];
+    const today = weekDay[now.getDay()];
+    const monthName = [
+      'Jan', 'Feb', 'Mar', 'Apr', 'May',
+      'Jun', 'Jul', 'Aug', 'Sept', 'Oct',
+      'Nov', 'Dec',
+    ];
+    const thisMonth = monthName[now.getMonth()];
+
+    return `${today} ${thisMonth} ${day} ${year} ${hour}:${minute}:${seconds}`;
+}
+
 export default {
   name: 'Content',
   components: {
@@ -48,35 +73,6 @@ export default {
     };
   },
 };
-
-function getDateTime() {
-    const now = new Date();
-    const year = now.getFullYear();
-    const day = now.getDate();
-    const hour = now.getHours();
-    const minute = now.getMinutes();
-    const second = now.getSeconds();
-
-    if (second <= 10) {
-        var seconds = '0' + second;
-    } else {
-        var seconds = second;
-    }
-
-    const weekDay = [
-      'Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat',
-    ];
-    const today = weekDay[now.getDay()];
-
-    const monthName = [
-      'Jan', 'Feb', 'Mar', 'Apr', 'May',
-      'Jun', 'Jul', 'Aug', 'Sept', 'Oct',
-      'Nov', 'Dec',
-    ];
-    const thisMonth = monthName[now.getMonth()];
-
-    return today + ' ' + thisMonth + ' ' + day + ' ' + year + ' ' + hour + ':' + minute + ':' + seconds;
-}
 
 </script>
 

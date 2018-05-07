@@ -142,9 +142,11 @@ export default {
 .carousel-button {
   background-color: $bg;
   border: none;
-  color: $zsh-text;
   border-radius: 2px;
+  color: $zsh-text;
+  display: block;
   font-style: italic;
+  margin: 0 auto;
   padding: 4px 10px;
   transition: background-color 0.4 ease-in-out, color 0.4 ease-in-out;
 
