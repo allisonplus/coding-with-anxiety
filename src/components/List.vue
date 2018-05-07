@@ -23,7 +23,7 @@
       </transition-group>
       </ul>
       <div class='carousel-controls'>
-        <button class='carousel-button' @click="next">// Read More</button>
+        <button class='carousel-button' @click="next">// Read Another</button>
       </div>
   </section>
 </template>

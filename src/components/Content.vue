@@ -146,7 +146,7 @@ h1 {
   margin: 40px 0 18px;
 
   @include media($tablet-portrait, null) {
-    margin: 120px 0 0;
+    margin: 85px 0 0;
   }
 }
 

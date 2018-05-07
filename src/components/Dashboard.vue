@@ -2,6 +2,7 @@
    <div class="dashboard">
     <header>
       <div class="wrapper">
+        <a class="home-link" href="">Home</a>
         <h1>Dashboard</h1>
         <input class="logout" type="submit" value="Exit" v-on:click="logOut">
       </div>
@@ -11,12 +12,15 @@
       <div class="table">
         <div class="row header">
           <span class="cell">Anxiety Thought</span>
+          <span class="cell">Submitted</span>
           <span class="cell">Approved?</span>
           <span class="cell">Delete</span>
         </div>
 
         <div class="row" v-for="anxiety in sortedAnxieties" :key="anxiety['.key']">
           <span class="cell">{{anxiety.thought}}</span>
+          <span class="cell time">{{anxiety.submittedAt}}</span>
+
           <span class="cell"><input type="checkbox" v-model="anxiety.status" v-bind:id="anxiety.id" v-on:click="updateStatus(anxiety)"><span class="boolean">{{anxiety.status}}</span></span>
           <span class="cell"><a @click.prevent="removeAnxiety(anxiety)" href="#" class="delete">&cross;</a></span>
         </div>
@@ -99,7 +103,7 @@
 
   header & {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
   }
 } // .wrapper
 
@@ -159,6 +163,25 @@ header {
       border-right: 2px solid $robin;
       text-align: left;
     }
+}
+
+// Home link.
+.home-link {
+  background-color: $white;
+  border: none;
+  font-family: $monospace;
+  text-decoration: none;
+  transition: background-color 0.2s linear;
+  padding: 0 10px;
+
+  &:hover {
+    background-color: lighten($electric, 40%);
+  }
+}
+
+// Time stamp.
+.time {
+  font-size: 13px;
 }
 
 input[type='checkbox'] {

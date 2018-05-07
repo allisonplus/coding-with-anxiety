@@ -24,6 +24,7 @@ export default {
       newAnxiety: {
         thought: '',
         status: false,
+        submittedAt: Date(),
       },
       anxietySubmitted: false,
     };
