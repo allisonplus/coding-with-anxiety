@@ -62,17 +62,20 @@ export default {
 
   label {
     display: block;
+    font-family: $monospace;
   }
 
   input {
     background-color: $bg;
     border-radius: 0;
     border: none;
+    font-family: $monospace;
     box-shadow: none;
     color: $mercury;
     padding: 8px;
     vertical-align: middle;
     white-space: normal;
+    width: 70%;
 
     &:focus,
     &:active {
