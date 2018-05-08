@@ -1,8 +1,7 @@
 <template>
   <section class="list-wrapper">
     <ul class="list">
-      <transition-group name="list-transition" tag="span">
-        <li v-for="(anxiety, index) in anxieties" v-if="anxiety.status" class='slide' :key="anxiety['.key']">
+      <li v-for="(anxiety, index) in anxieties" v-if="anxiety.status" :key="anxiety['.key']">
           <span class="data-prompt">></span>
           <vue-typer v-if="index===0"
             :text='anxiety.thought'
@@ -19,12 +18,11 @@
             >
           </vue-typer>
           <p v-else>{{anxiety.thought}}</p>
-        </li>
-      </transition-group>
-      </ul>
-      <div class='carousel-controls'>
-        <button class='carousel-button' @click="next">// Read Another</button>
-      </div>
+      </li>
+    </ul>
+    <div class='carousel-controls'>
+      <button class='carousel-button' @click="next">// Read Another</button>
+    </div>
   </section>
 </template>
 
