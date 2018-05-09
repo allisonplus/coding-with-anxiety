@@ -82,9 +82,14 @@ export default {
   margin: 0 0 20px;
   min-height: 50px;
   overflow: hidden;
-  padding: 0 12px 12px 0;
+  padding: 0;
 
   @include media($tablet-portrait, null) {
+    padding: 0 12px 12px 0;
+    min-height: 100px;
+  }
+
+  @include media($tablet-landscape, null) {
     min-height: 200px;
   }
 

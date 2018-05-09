@@ -32,7 +32,10 @@ export default {
 #instafeed {
 
   img {
-    display: block;
+
+    @include media($tablet-landscape, null) {
+      display: block;
+    }
   }
 } // #instafeed
 

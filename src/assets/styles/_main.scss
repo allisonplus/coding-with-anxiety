@@ -46,7 +46,6 @@ h6 {
 	.right {
 		@include size(100% 100%);
 
-		display: flex;
 		flex: 1;
 		flex-direction: column;
 
@@ -57,7 +56,6 @@ h6 {
 
 	// Left side.
 	.left {
-		justify-content: flex-start;
 		padding: 12px 0 0;
 
 		@include media($tablet-portrait, null) {
@@ -65,9 +63,6 @@ h6 {
 		}
 
 		.wrapper {
-			display: flex;
-			flex-direction: row;
-			justify-content: space-between;
 
 			@include media($large-desktop, null) {
 				margin: 0 50% 0 auto;

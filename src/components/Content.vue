@@ -1,13 +1,13 @@
 <template>
     <div class="container">
       <section class="left">
-        <div class="wrapper">
+        <div class="wrapper clearfix">
           <header>
             <div class="line">
-              <p><span class="now">Last login: {{ dateTime }}</span></p>
+              <p><span class="now">Last login: {{dateTime}}</span></p>
             </div>
             <div class="line">
-              <span class="path">~/<h1>{{ msg }}</h1></span>
+              <span class="path">~/<h1>{{msg}}</h1></span>
               <span class="branch"><i class="fas fa-code-branch"></i> master</span>
               <span class="command"></span>
             </div>
@@ -145,30 +145,5 @@ h1 {
     margin: 85px 0 0;
   }
 }
-
-// Social icons.
-.social {
-  margin: 20px 0;
-
-  a {
-    color: $white;
-    float: left;
-    transition: color 0.2s linear;
-
-    &:hover,
-    &:active,
-    &:focus {
-      color: darken($white, 30%);
-    }
-
-    &:not(:last-of-type) {
-      margin-right: 12px;
-    }
-  }
-
-  .fab {
-    font-size: 32px;
-  }
-} // social
 
 </style>
