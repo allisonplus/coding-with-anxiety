@@ -1,10 +1,10 @@
 <template>
   <section class="list-wrapper">
     <ul class="list">
-      <li v-for="(anxiety, index) in anxieties" v-if="anxiety.status" :key="anxiety['.key']">
+      <li>
           <span class="data-prompt">></span>
-          <vue-typer v-if="index===0"
-            :text='anxiety.thought'
+          <vue-typer
+            :text='currentAnxiety'
             :repeat='0'
             :shuffle='false'
             initial-action='typing'
@@ -17,7 +17,6 @@
             caret-animation='blink'
             >
           </vue-typer>
-          <p v-else>{{anxiety.thought}}</p>
       </li>
     </ul>
     <div class='carousel-controls'>
@@ -35,6 +34,7 @@ export default {
   name: 'List',
   data() {
     return {
+      currentIndex: 0,
     };
   },
   firebase: {
@@ -42,25 +42,31 @@ export default {
   },
   methods: {
     next() {
-      const first = this.anxieties.shift();
-      this.anxieties = this.anxieties.concat(first);
-      if (this.anxieties[0].status === false) {
-        this.next();
-        // eslint-disable-next-line
-      } else { return; }
-    },
-    previous() {
-      const last = this.anxieties.pop();
-      this.anxieties = [last].concat(this.anxieties);
-      if (this.anxieties[0].status === false) {
-        this.previous();
-        // eslint-disable-next-line
-      } else { return; }
+      // Get length of the reversed & filtered array.
+      const length = this.reverse.length;
+
+      // Compare current anxiety's index with length of array to cycle through.
+      if ( (this.currentIndex + 1) < length ) {
+        this.currentIndex = this.currentIndex + 1;
+      } else {
+        this.currentIndex = 0;
+      }
     },
   },
   // Explicitly set binding data to firebase as an array.
   created() {
       this.$bindAsArray('anxieties', anxietiesList);
+  },
+  computed: {
+    filteredAnxieties: function() {
+      return this.anxieties.filter((anxiety) => anxiety.status);
+    },
+    reverse: function() {
+      return this.filteredAnxieties.reverse();
+    },
+    currentAnxiety: function() {
+      return this.reverse[this.currentIndex].thought;
+    },
   },
 };
 
