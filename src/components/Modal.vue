@@ -6,17 +6,26 @@
       <div class="overlay" v-on:click="closeModal"></div>
       <div class="modal">
         <button class="close-button" v-bind:class="{ active: isActive }" v-on:click="closeModal"><i class="fa fa-times"></i></button>
+        <h3>About</h3>
+        <p>I started this site to help people feel less alone.</p>
+        <p>The purpose of this is to help you externalize your anxieties. To realize that many people experience them, even if it isn't always completely transparent.</p>
+
         <h3>Resources</h3>
-        <p>I started this site as a way to gather others' anxieties in order to help people externalize hidden fears as well as to help others feel less alone in their anxiety.</p>
-        <p>Not someone who codes or is involved in tech? You likely still have anxieties! You don't have to be in tech to add to the melting pot here.</p>
         <ul class="resource-list">
-          <li><a href="https://osmihelp.org/">Open Source Mental Illness</a></li>
-          <li><a href="http://selfcare.tech/">Selfcare.tech</a></li>
-          <li><a href="https://www.crisistextline.org/">Crisis Text Line</a></li>
-          <li><a href="https://www.if-me.org/">If Me</a></li>
-          <li><a href="https://www.imalive.org/">I'm Alive</a></li>
+          <li><a href="https://osmihelp.org/">Open Source Mental Illness</a>: awareness, education, and resources</li>
+          <li><a href="http://selfcare.tech/">Selfcare.tech</a>: repository of self-care resources for developers & others</li>
+          <li><a href="https://www.crisistextline.org/">Crisis Text Line</a>: US-based support line</li>
+          <li><a href="https://www.imalive.org/">I'm Alive</a>: online crisis chat support and education</li>
+          <li><a href="https://adaa.org/finding-help/mobile-apps#">Mental Health apps</a>: list of ADAA reviewed mental health apps</li>
         </ul>
         <h5>Created with feels by <a href="http://www.allisontarr.com">Allison Tarr</a>.</h5>
+
+        <div class="social clearfix">
+          <a href="https://www.instagram.com/codingwithanxiety/"><i class="fab fa-instagram"></i></a>
+          <a href="http://www.twitter.com/codinganxiety"><i class="fab fa-twitter"></i></a>
+        </div>
+
+        <p class="disclaimer"><em>Note:</em> this tool is not a substitute for professional diagnosis, support & guidance. If you're in need of immediate assistance, please call your doctor or local emergency services immediately.</p>
       </div>
     </div>
   </section>
@@ -101,11 +110,30 @@ export default {
 
     h3,
     p {
-      margin-top: 0;
+      margin: 0 0 12px;
     }
 
     h5 {
       margin: 0;
+
+      a {
+        background-color: $robin;
+        background: linear-gradient(60deg, $helio 15%, darken($robin, 15%) 35%, $black 52%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+
+    a {
+      color: $helio;
+      letter-spacing: .8px;
+      text-decoration: none;
+      transition: color 0.25s ease-in-out;
+
+      &:hover,
+      &:active {
+        color: $bg;
+      }
     }
   }
 
@@ -126,5 +154,27 @@ export default {
     }
   }
 } // .modal-container
+
+.disclaimer {
+  font-size: 16px;
+}
+
+// Social icons.
+.social {
+  margin: 0 0 16px;
+
+  a {
+    float: left;
+    transition: color 0.2s linear;
+
+    &:not(:last-of-type) {
+      margin-right: 12px;
+    }
+  }
+
+  .fab {
+    font-size: 24px;
+  }
+} // social
 
 </style>
