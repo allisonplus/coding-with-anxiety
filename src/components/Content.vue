@@ -41,8 +41,10 @@ function getDateTime() {
     const minute = now.getMinutes();
     const second = now.getSeconds();
     let seconds = '';
+    let minutes = '';
 
-    seconds = second <= 10 ? `0${second}` : second;
+    minutes = minute < 10 ? `0${minute}` : minute;
+    seconds = second < 10 ? `0${second}` : second;
 
     const weekDay = [
       'Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat',
@@ -55,7 +57,7 @@ function getDateTime() {
     ];
     const thisMonth = monthName[now.getMonth()];
 
-    return `${today} ${thisMonth} ${day} ${year} ${hour}:${minute}:${seconds}`;
+    return `${today} ${thisMonth} ${day} ${year} ${hour}:${minutes}:${seconds}`;
 }
 
 export default {
