@@ -4,7 +4,7 @@
       <li>
           <span class="data-prompt">></span>
           <vue-typer
-            :text='currentAnxiety'
+            :text='currentAnxiety.thought'
             :repeat='0'
             :shuffle='false'
             initial-action='typing'
@@ -65,7 +65,7 @@ export default {
       return this.filteredAnxieties.reverse();
     },
     currentAnxiety: function() {
-      return this.reverse[this.currentIndex].thought;
+      return this.reverse[this.currentIndex];
     },
   },
 };
