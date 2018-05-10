@@ -25,6 +25,7 @@
           <a href="http://www.twitter.com/codinganxiety"><i class="fab fa-twitter"></i></a>
         </div>
 
+        <!-- eslint-disable-next-line -->
         <p class="disclaimer"><em>Note:</em> this tool is not a substitute for professional diagnosis, support & guidance. If you're in need of immediate assistance, please call your doctor or local emergency services immediately.</p>
       </div>
     </div>

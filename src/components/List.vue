@@ -46,7 +46,7 @@ export default {
       const length = this.reverse.length;
 
       // Compare current anxiety's index with length of array to cycle through.
-      if ( (this.currentIndex + 1) < length ) {
+      if ((this.currentIndex + 1) < length) {
         this.currentIndex = this.currentIndex + 1;
       } else {
         this.currentIndex = 0;
@@ -58,13 +58,14 @@ export default {
       this.$bindAsArray('anxieties', anxietiesList);
   },
   computed: {
-    filteredAnxieties: function() {
-      return this.anxieties.filter((anxiety) => anxiety.status);
+    filteredAnxieties() {
+      return this.anxieties.filter(anxiety => anxiety.status);
     },
-    reverse: function() {
-      return this.filteredAnxieties.reverse();
+    reverse() {
+      // return this.filteredAnxieties.reverse();
+      return this.filteredAnxieties.slice(0).reverse();
     },
-    currentAnxiety: function() {
+    currentAnxiety() {
       return this.reverse[this.currentIndex];
     },
   },
