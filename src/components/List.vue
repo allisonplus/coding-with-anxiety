@@ -5,15 +5,16 @@
           <span class="data-prompt">></span>
           <vue-typer
             :text='currentAnxiety.thought'
-            :repeat='0'
+            @erased='onErased'
+            :repeat='Infinity'
             :shuffle='false'
             initial-action='typing'
             :pre-type-delay='55'
             :type-delay='35'
             :pre-erase-delay='2000'
-            :erase-delay='200'
+            :erase-delay='100'
             erase-style='backspace'
-            :erase-on-complete='false'
+            :erase-on-complete='true'
             caret-animation='blink'
             >
           </vue-typer>
@@ -52,6 +53,9 @@ export default {
         this.currentIndex = 0;
       }
     },
+    onErased() {
+      this.next();
+    },
   },
   // Explicitly set binding data to firebase as an array.
   created() {
@@ -62,7 +66,6 @@ export default {
       return this.anxieties.filter(anxiety => anxiety.status);
     },
     reverse() {
-      // return this.filteredAnxieties.reverse();
       return this.filteredAnxieties.slice(0).reverse();
     },
     currentAnxiety() {
@@ -77,10 +80,10 @@ export default {
 @import '../assets/styles/_variables.scss';
 
 .list-wrapper {
-  margin-top: 16px;
+  padding-top: 16px;
 
   @include media($phone-landscape, null) {
-    margin-top: 40px;
+    padding-top: 40px;
   }
 }
 
@@ -132,6 +135,12 @@ export default {
     hyphens: auto;
     word-break: break-all;
     word-wrap: break-word;
+  }
+
+  .custom.caret {
+    background-color: $zsh-text;
+    line-height: 1.3;
+    width: 3px;
   }
 
   &.typed {

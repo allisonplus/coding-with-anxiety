@@ -99,7 +99,7 @@
 // Wrapper.
 .wrapper {
   margin: 20px auto;
-  max-width: 900px;
+  max-width: 1200px;
 
   header & {
     display: flex;
