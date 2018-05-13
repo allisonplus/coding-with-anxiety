@@ -5,21 +5,25 @@
 </template>
 
 <script>
-import Instafeed from 'instafeed';
-
-const feed = new Instafeed({
-  get: 'user',
-  userId: '7183925804',
-  accessToken: '7183925804.9ddded5.19f19b53c4d84028838191faf8041d5e',
-  template: '<a class="insta-link" href="{{link}}"><img src="{{image}}" /></a>',
-});
-feed.run();
+import Instafeed from 'instafeed.js';
 
 export default {
   name: 'Instafeed',
   data() {
     return {
     };
+  },
+  mounted() {
+    this.feed = new Instafeed({
+      get: 'user',
+      userId: '7183925804',
+      accessToken: '7183925804.9ddded5.19f19b53c4d84028838191faf8041d5e',
+      resolution: 'thumbnail',
+      template: '<a href="{{link}}" target="_blank" id="{{id}}"><img class="class" src="{{image}}" /></a>',
+      sortBy: 'most-recent',
+      limit: 4,
+    });
+    this.feed.run();
   },
 };
 </script>
