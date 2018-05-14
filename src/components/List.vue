@@ -105,7 +105,7 @@ export default {
 
   li {
     display: flex;
-    padding: 10px;
+    padding: 10px 10px 10px 3px;
     transition: transform 0.4s linear;
     word-break: break-all;
 
@@ -163,9 +163,7 @@ export default {
   border: none;
   border-radius: 2px;
   color: $zsh-text;
-  display: block;
   font-style: italic;
-  margin: 0 auto;
   padding: 4px 10px;
   transition: background-color 0.4 ease-in-out, color 0.4 ease-in-out;
 
