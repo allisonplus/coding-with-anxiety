@@ -19,7 +19,7 @@ export default {
       userId: '7183925804',
       accessToken: '7183925804.9ddded5.19f19b53c4d84028838191faf8041d5e',
       resolution: 'thumbnail',
-      template: '<a class="insta-link" href="{{link}}" target="_blank" id="{{id}}"><img src="{{image}}" /></a>',
+      template: '<a class="insta-link" href="{{link}}" tabindex="-1" target="_blank" id="{{id}}"><img src="{{image}}" /></a>',
       sortBy: 'most-recent',
     });
     this.feed.run();
