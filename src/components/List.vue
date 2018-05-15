@@ -11,7 +11,7 @@
             initial-action='typing'
             :pre-type-delay='55'
             :type-delay='35'
-            :pre-erase-delay='2000'
+            :pre-erase-delay='3000'
             :erase-delay='100'
             erase-style='backspace'
             :erase-on-complete='true'
