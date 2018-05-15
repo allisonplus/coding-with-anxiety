@@ -90,11 +90,12 @@ h6 {
 	@include size(0);
 
 	border-bottom: 25px solid lighten($bg, 10%);
-	border-left: 25px solid transparent;
+	border-left: 25px solid $bg;
 	border-right: 25px solid lighten($bg, 10%);
-	border-top: 25px solid transparent;
+	border-top: 25px solid $bg;
 	bottom: 0;
 	cursor: pointer;
+	padding: 0;
 	position: fixed;
 	right: 0;
 

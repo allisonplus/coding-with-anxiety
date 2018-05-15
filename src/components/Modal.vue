@@ -1,11 +1,10 @@
 <template>
-  <section class="modal">
-    <div class="show-info" v-bind:class="{ active: isActive }" v-on:click="isActive = !isActive" ><span>?</span></div>
+  <section class="modal" role="dialog">
+    <button class="show-info" v-bind:class="{ active: isActive }" v-on:click="isActive = !isActive" aria-label="Open Modal"><span>?</span></button>
 
     <div class="modal-container" v-bind:class="{ active: isActive }">
       <div class="overlay" v-on:click="closeModal"></div>
       <div class="modal">
-        <button class="close-button" v-bind:class="{ active: isActive }" v-on:click="closeModal"><i class="fa fa-times"></i></button>
         <h3>About</h3>
         <p>I started this site to help people feel less alone.</p>
         <p>The purpose of this is to help you externalize your anxieties. To realize that many people experience them, even if it isn't always completely transparent.</p>
@@ -27,6 +26,8 @@
 
         <!-- eslint-disable-next-line -->
         <p class="disclaimer"><em>Note:</em> this tool is not a substitute for professional diagnosis, support & guidance. If you're in need of immediate assistance, please call your doctor or local emergency services immediately.</p>
+
+        <button class="close-button" v-bind:class="{ active: isActive }" v-on:click="closeModal" aria-label="Close Modal"><i class="fa fa-times"></i></button>
       </div>
     </div>
   </section>
