@@ -1,7 +1,6 @@
 <template>
     <div class="container">
-      <section class="left">
-        <div class="wrapper clearfix">
+      <section class="content">
           <header>
             <div class="line">
               <p><span class="now">Last login: {{dateTime}}</span></p>
@@ -12,7 +11,6 @@
               <span class="command"></span>
             </div>
           </header>
-        </div> <!--.wrapper-->
 
         <List/>
 
@@ -21,7 +19,6 @@
         </div><!--.anxiety-wrapper-->
       </section>
 
-      <Instafeed/>
       <Modal/>
 
   </div><!--.container-->
@@ -29,7 +26,6 @@
 
 <script>
 import Form from './Form';
-import Instafeed from './Instafeed';
 import Modal from './Modal';
 import List from './List';
 
@@ -64,7 +60,6 @@ export default {
   name: 'Content',
   components: {
     Form,
-    Instafeed,
     Modal,
     List,
   },

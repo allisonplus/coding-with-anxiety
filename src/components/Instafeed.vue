@@ -33,11 +33,12 @@ export default {
 
 // Instagram feed on right side.
 #instafeed {
+  flex-direction: row;
 
   img {
 
     @include media($tablet-landscape, null) {
-      display: block;
+      // display: block;
     }
   }
 } // #instafeed

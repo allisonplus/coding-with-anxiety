@@ -42,45 +42,36 @@ h6 {
 		margin-top: 0;
 	}
 
-	.left,
-	.right {
+	// Content.
+	.content {
 		@include size(100% 100%);
 
 		flex: 1;
 		flex-direction: column;
-
-		@include media($tablet-landscape, null) {
-			width: initial;
-		}
-	}
-
-	// Left side.
-	.left {
 		padding: 12px 0 0;
 
 		@include media($tablet-portrait, null) {
 			padding: 32px 0 0;
 		}
 
-		.wrapper {
-
-			@include media($large-desktop, null) {
-				margin: 0 50% 0 auto;
-			}
+		@include media($tablet-landscape, null) {
+			max-width: 80%;
+			width: initial;
 		}
-	} // left
+	} // .content
 
 	// Right side.
 	.right {
-		background-color: $bg;
-		background-image: linear-gradient(to right, $white 0, transparent 1px), linear-gradient(to bottom, $white 0, transparent 1px);
-		background-size: 150px 150px;
-		justify-content: flex-start;
-		padding: 0;
+		flex-direction: row;
+		// background-color: $bg;
+		// background-image: linear-gradient(to right, $white 0, transparent 1px), linear-gradient(to bottom, $white 0, transparent 1px);
+		// background-size: 150px 150px;
+		// justify-content: flex-start;
+		// padding: 0;
 
 		@include media($tablet-landscape, null) {
-			margin-left: 32px;
-			max-width: 151px;
+			// margin-left: 32px;
+			// max-width: 151px;
 		}
 	}
 }
@@ -105,4 +96,4 @@ h6 {
 		position: relative;
 		right: -7px;
 	}
-}
+} // .show-info

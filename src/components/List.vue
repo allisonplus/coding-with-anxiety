@@ -105,7 +105,7 @@ export default {
 
   li {
     display: flex;
-    padding: 10px 10px 10px 3px;
+    padding: 10px 10px 10px 5px;
     transition: transform 0.4s linear;
     word-break: break-all;
 

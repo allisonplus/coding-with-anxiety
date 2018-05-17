@@ -19,13 +19,14 @@
         </ul>
         <h5>Created with feels by <a href="http://www.allisontarr.com">Allison Tarr</a>.</h5>
 
+        <!-- eslint-disable-next-line -->
+        <p class="disclaimer"><em>Note:</em> this tool is not a substitute for professional diagnosis, support & guidance. If you're in need of immediate assistance, please call your doctor or local emergency services immediately.</p>
+
         <div class="social clearfix">
+          <Instafeed/>
           <a href="https://www.instagram.com/codingwithanxiety/"><i class="fab fa-instagram"></i></a>
           <a href="http://www.twitter.com/codinganxiety"><i class="fab fa-twitter"></i></a>
         </div>
-
-        <!-- eslint-disable-next-line -->
-        <p class="disclaimer"><em>Note:</em> this tool is not a substitute for professional diagnosis, support & guidance. If you're in need of immediate assistance, please call your doctor or local emergency services immediately.</p>
 
         <button class="close-button" v-bind:class="{ active: isActive }" v-on:click="closeModal" aria-label="Close Modal"><i class="fa fa-times"></i></button>
       </div>
@@ -35,9 +36,13 @@
 </template>
 
 <script>
+import Instafeed from './Instafeed';
 
 export default {
   name: 'Modal',
+  components: {
+    Instafeed,
+  },
   data() {
     return {
       isActive: false,
@@ -99,6 +104,7 @@ export default {
     background: rgba($mercury, 0.9);
     box-shadow: 3px 4px 8px rgba($bg, 0.6);
     color: $black;
+    line-height: 1.6;
     margin: 0 auto;
     max-width: 90%;
     padding: 20px;
@@ -110,17 +116,20 @@ export default {
       max-width: 1000px;
     }
 
-    h3,
     p {
       margin: 0 0 12px;
     }
 
-    h5 {
+    h3 {
       margin: 0;
+    }
+
+    h5 {
+      margin: 0 0 12px;
 
       a {
         background-color: $robin;
-        background: linear-gradient(60deg, $helio 15%, darken($robin, 15%) 35%, $black 52%);
+        background: linear-gradient(60deg, $helio 15%, darken($robin, 15%) 35%, $helio 62%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
@@ -156,6 +165,15 @@ export default {
     }
   }
 } // .modal-container
+
+.resource-list {
+  font-size: 18px;
+  margin-top: 0;
+
+  li {
+    line-height: 1.4;
+  }
+}
 
 .disclaimer {
   font-size: 16px;
