@@ -1,7 +1,7 @@
 <template>
   <section class="wrapper-form">
     <form id="anxiety-share" class="anxiety-form" v-on:submit.prevent="addAnxiety">
-      <label for="Your Anxiety">Submit Your Anxiety</label>
+      <label for="yourAnxiety" aria-label="Submit Your Anxiety">Submit Your Anxiety</label>
        <span class="data-prompt"><i class="fas fa-angle-double-right"></i></span><span class="blinking-cursor"></span>
        <input type="text" id="yourAnxiety" v-model="newAnxiety.thought" autofocus autocomplete="off">
 
