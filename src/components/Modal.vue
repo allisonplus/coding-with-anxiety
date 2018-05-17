@@ -17,6 +17,7 @@
           <li><a href="https://www.imalive.org/">I'm Alive</a>: online crisis chat support and education</li>
           <li><a href="https://adaa.org/finding-help/mobile-apps#">Mental Health apps</a>: list of ADAA reviewed mental health apps</li>
         </ul>
+
         <h5>Created with feels by <a href="http://www.allisontarr.com">Allison Tarr</a>.</h5>
 
         <!-- eslint-disable-next-line -->
@@ -72,17 +73,21 @@ export default {
 // Container around modal content.
 .modal-container {
   @include size(100% auto);
-  @include position(fixed, 5%, null, null, 0);
+  @include position(fixed, 50%, null, null, 50%);
 
   display: flex;
+  margin: 0 auto;
+  max-height: calc(100% - 60px);
   opacity: 0;
+  transform: translate(-50%, -50%);
   transition: all 0.3s ease;
   visibility: hidden;
   z-index: 99;
 
   @include media($tablet-landscape, null) {
     @include size(100% 100%);
-    @include position(fixed, 0, null, null, 0);
+
+    max-height: initial;
   }
 
   &.active {
@@ -93,7 +98,7 @@ export default {
   // Overlay for contrast.
   .overlay {
     @include size(100% 100%);
-    @include position(absolute, 0, null, null, 0);
+    @include position(absolute, 0, 0, 0, 0);
 
     background: rgba($black, 0.4);
     z-index: 10;
@@ -106,14 +111,17 @@ export default {
     color: $black;
     line-height: 1.6;
     margin: 0 auto;
+    max-height: calc(100% - 150px);
     max-width: 90%;
+    overflow: auto;
     padding: 20px;
     position: relative;
-    z-index: 10;
+    z-index: 99;
 
     @include media($tablet-landscape, null) {
       margin: auto;
       max-width: 1000px;
+      overflow: auto;
     }
 
     p {
@@ -150,7 +158,7 @@ export default {
 
   .close-button {
     @include size(26px);
-    @include position(absolute, -12px, null, null, -12px);
+    @include position(absolute, 12px, 12px, null, null);
 
     background: rgba($white, 0.9);
     border: none;
