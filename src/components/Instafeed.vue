@@ -31,15 +31,12 @@ export default {
 <style lang="scss">
 @import '../assets/styles/_variables.scss';
 
-// Instagram feed on right side.
+// Instagram feed in modal.
 #instafeed {
   flex-direction: row;
 
   img {
-
-    @include media($tablet-landscape, null) {
-      // display: block;
-    }
+    max-width: 125px;
   }
 } // #instafeed
 

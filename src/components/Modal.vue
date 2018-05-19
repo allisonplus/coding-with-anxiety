@@ -5,9 +5,10 @@
     <div class="modal-container" v-bind:class="{ active: isActive }">
       <div class="overlay" v-on:click="closeModal"></div>
       <div class="modal">
-        <h3>About</h3>
-        <p>I started this site to help people feel less alone.</p>
-        <p>The purpose of this is to help you externalize your anxieties. To realize that many people experience them, even if it isn't always completely transparent.</p>
+          <button class="close-button" v-bind:class="{ active: isActive }" v-on:click="closeModal" aria-label="Close Modal"><i class="fa fa-times"></i></button>
+          <h3>About</h3>
+          <p>I started this site to help people feel less alone.</p>
+          <p>The purpose of this is to help you externalize your anxieties. To realize that many people experience them, even if it isn't always completely transparent.</p>
 
         <h3>Resources</h3>
         <ul class="resource-list">
@@ -18,20 +19,20 @@
           <li><a href="https://adaa.org/finding-help/mobile-apps#">Mental Health apps</a>: list of ADAA reviewed mental health apps</li>
         </ul>
 
-        <h5>Created with feels by <a href="http://www.allisontarr.com">Allison Tarr</a>.</h5>
-
         <!-- eslint-disable-next-line -->
         <p class="disclaimer"><em>Note:</em> this tool is not a substitute for professional diagnosis, support & guidance. If you're in need of immediate assistance, please call your doctor or local emergency services immediately.</p>
 
-        <div class="social clearfix">
+        <div class="social">
           <Instafeed/>
-          <a href="https://www.instagram.com/codingwithanxiety/"><i class="fab fa-instagram"></i></a>
-          <a href="http://www.twitter.com/codinganxiety"><i class="fab fa-twitter"></i></a>
-        </div>
+          <div class="icons clearfix">
+            <a href="https://www.instagram.com/codingwithanxiety/"><i class="fab fa-instagram"></i></a>
+            <a href="http://www.twitter.com/codinganxiety"><i class="fab fa-twitter"></i></a>
+          </div>
+          <h5>Created with feels by <a href="http://www.allisontarr.com">Allison Tarr</a>.</h5>
+        </div><!--social-->
 
-        <button class="close-button" v-bind:class="{ active: isActive }" v-on:click="closeModal" aria-label="Close Modal"><i class="fa fa-times"></i></button>
-      </div>
-    </div>
+      </div><!--modal-->
+    </div><!--modal-container-->
   </section>
 
 </template>
@@ -109,12 +110,12 @@ export default {
     background: rgba($mercury, 0.9);
     box-shadow: 3px 4px 8px rgba($bg, 0.6);
     color: $black;
-    line-height: 1.6;
+    line-height: 1.5;
     margin: 0 auto;
     max-height: calc(100% - 150px);
     max-width: 90%;
     overflow: auto;
-    padding: 20px;
+    padding: 12px 16px 0;
     position: relative;
     z-index: 99;
 
@@ -133,7 +134,10 @@ export default {
     }
 
     h5 {
-      margin: 0 0 12px;
+      display: inline-block;
+      font-size: 16px;
+      line-height: 1;
+      margin: 0;
 
       a {
         background-color: $robin;
@@ -141,7 +145,7 @@ export default {
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
-    }
+    } // h5
 
     a {
       color: $helio;
@@ -154,7 +158,7 @@ export default {
         color: $bg;
       }
     }
-  }
+  } // modal
 
   .close-button {
     @include size(26px);
@@ -171,12 +175,12 @@ export default {
 
       transform: translate(-50%, -50%);
     }
-  }
+  } // close-button
 } // .modal-container
 
 .resource-list {
   font-size: 18px;
-  margin-top: 0;
+  margin: 0 0 10px;
 
   li {
     line-height: 1.4;
@@ -191,18 +195,24 @@ export default {
 .social {
   margin: 0 0 16px;
 
-  a {
+  .icons {
+    display: inline-block;
+    margin-right: 12px;
+    vertical-align: middle;
+  }
+
+ .icons a {
     float: left;
+    font-size: 0;
     transition: color 0.2s linear;
 
     &:not(:last-of-type) {
       margin-right: 12px;
     }
-  }
 
-  .fab {
-    font-size: 24px;
-  }
+    .fab {
+      font-size: 22px;
+    }
+ } // .icons a
 } // social
-
 </style>
